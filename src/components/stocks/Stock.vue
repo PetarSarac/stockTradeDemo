@@ -1,10 +1,9 @@
 <template>
-
     <el-col class="stock" :span="8" :xs="24" :sm="12" :md="8" :lg="6" :xl="6">
         <div class="card" style="margin:15px;">
             <div class="card-body">
                 <h5 class="card-title alert alert-success">{{stock.name}} <small>(Price : <span class="text-success">{{stock.price | currency}})</span></small></h5>
-                <!--<input class="form-control" :class="{danger : insufficientFunds}" type="number" placeholder="Quantity" v-model="Quantity">-->
+                
                 <el-input-number v-model="Quantity"  :min="1" :max="canBuy"></el-input-number>
                 <br>
                 <br>
@@ -13,14 +12,10 @@
                         @click="buyStock" :disabled="insufficientFunds || Quantity <= 0">{{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}
                     </el-button>
                 </el-badge>
-                <!--<p v-if="insufficientFunds" class="text-warning">Insufficient funds !</p>-->
-            </div>
-            
-        </div>
-       
+                
+            </div>    
+        </div>   
     </el-col>
-
-
 </template>
 
 <script>
